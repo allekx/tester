@@ -745,6 +745,11 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 640px) {
+   .portal-buttons{
+    margin-bottom: 2rem;
+   }
+}
 
 @media (min-width: 1024px) {
   .segmentos__grid {
