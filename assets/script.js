@@ -225,3 +225,13 @@ if ("IntersectionObserver" in window && growthNumbers.length) {
   growthNumbers.forEach((number) => animateNumber(number));
 }
 
+  // Make .segment-card clickable using its data-link attribute (opens in new tab)
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest && e.target.closest('.segment-card');
+    if (!card) return;
+    const url = card.dataset.link;
+    if (!url || url === 'LINK_CADASTRO_AQUI') return;
+    // open in a new tab safely
+    window.open(url, '_blank', 'noopener');
+  });
+

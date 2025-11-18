@@ -207,8 +207,28 @@ a {
   padding-top: 0.75rem;
   border-top: 1px solid rgba(93, 107, 95, 0.15);
   justify-content: flex-start;
+
+}
+.portal-button:hover {
+  /* subtle lift and color accent */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(16, 52, 33, 0.12);
+  border-color: rgba(30, 143, 74, 0.14);
+  background: linear-gradient(180deg, rgba(30,143,74,0.06), rgba(255,255,255,0.02));
 }
 
+.portal-button:active {
+  transform: translateY(-1px) scale(0.997);
+}
+
+/* gentle zoom on the internal image for a polished effect */
+.portal-button .portal-button__image {
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+.portal-button:hover .portal-button__image {
+  transform: scale(1.03);
+  filter: brightness(0.98) saturate(1.05);
+}
 .portal-button {
   width: 90px;
   height: 40px;
@@ -673,6 +693,8 @@ a {
     align-items: center;
     gap: 1rem;
     flex: 1;
+    /* allow hover transforms from children (portal buttons) to be visible */
+    overflow: visible;
   }
 
   .main-nav ul {
