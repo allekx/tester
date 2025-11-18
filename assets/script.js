@@ -180,23 +180,48 @@ const animateNumber = (element) => {
   requestAnimationFrame(update);
 };
 
-if ("IntersectionObserver" in window && growthSection) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !growthHasAnimated) {
-          growthNumbers.forEach((number) => animateNumber(number));
-          growthHasAnimated = true;
-          observer.disconnect();
-        }
-      });
-    },
-    {
-      threshold: 0.4,
-    }
-  );
-  observer.observe(growthSection);
+// Number animation trigger
+if ("IntersectionObserver" in window && growthNumbers.length) {
+  // On small screens, animate each card individually as it scrolls into view.
+  const isMobileView = window.matchMedia('(max-width: 767px)').matches;
+
+  if (isMobileView) {
+    const cardObserver = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // find the number inside the card and animate it
+            const numberEl = entry.target.querySelector('.indicador-card__numero') || entry.target;
+            if (numberEl && !numberEl.classList.contains('count-done')) {
+              animateNumber(numberEl);
+            }
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    const cards = document.querySelectorAll('.indicador-card');
+    cards.forEach((card) => cardObserver.observe(card));
+  } else if (growthSection) {
+    // Desktop / tablet: keep the original behavior (animate all when the section appears)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !growthHasAnimated) {
+            growthNumbers.forEach((number) => animateNumber(number));
+            growthHasAnimated = true;
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(growthSection);
+  }
 } else {
+  // Fallback for older browsers: animate all immediately
   growthNumbers.forEach((number) => animateNumber(number));
 }
 
