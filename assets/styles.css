@@ -468,6 +468,7 @@ a {
   box-shadow: var(--shadow);
 }
 
+
 .atividades__content h2 {
   margin-top: 0.5rem;
 }
@@ -610,8 +611,6 @@ a {
 .social-icons a {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -690,6 +689,7 @@ a {
   }
 
   .atividades__content {
+    margin-left: 0rem;
     grid-area: content;
   }
 
@@ -713,6 +713,38 @@ a {
 
   .contato__grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Desktop / notebook: centralizar os itens da seção Atividades */
+  .atividades__grid {
+    /* mantém duas colunas, mas centraliza os itens dentro do grid */
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center; /* centraliza o conteúdo de cada célula */
+    gap: 2.5rem;
+    max-width: 1000px; /* evita que o grid ocupe toda largura em telas muito largas */
+    margin: 0 auto; /* centraliza o grid dentro da .container */
+  }
+
+  .atividades__content {
+    max-width: 560px; /* restringe a largura do bloco de texto para ficar visualmente centralizado */
+    justify-self: center; /* centraliza este item na sua célula */
+    text-align: left; /* mantém o texto alinhado à esquerda; mude para center se preferir */
+  }
+
+  .atividades__image {
+    justify-self: center;
+  }
+
+  .atividades__cta {
+    justify-self: start;
+    align-self: center;
+  }
+
+  .atividades__image img {
+    max-width: 420px; /* limita o tamanho da imagem em telas grandes para equilíbrio visual */
+    width: 100%;
+    height: auto;
   }
 }
 
