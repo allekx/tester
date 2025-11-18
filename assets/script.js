@@ -157,13 +157,23 @@ const animateNumber = (element) => {
   const prefix = element.dataset.prefix ?? "";
   const suffix = element.dataset.suffix ?? "";
 
+  // easeOutQuad
+  const easeOut = (t) => 1 - (1 - t) * (1 - t);
+
   const update = (currentTime) => {
     const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const value = Math.floor(progress * target);
-    element.textContent = `${prefix}${value}${suffix}`;
-    if (progress < 1) {
+    const rawProgress = Math.min(elapsed / duration, 1);
+    const progress = easeOut(rawProgress);
+    const value = Math.round(progress * target);
+    // format with thousands separator for readability
+    const formatted = value.toLocaleString('pt-BR');
+    element.textContent = `${prefix}${formatted}${suffix}`;
+    if (rawProgress < 1) {
       requestAnimationFrame(update);
+    } else {
+      // final state: ensure exact target
+      element.textContent = `${prefix}${target.toLocaleString('pt-BR')}${suffix}`;
+      element.classList.add('count-done');
     }
   };
 
