@@ -146,7 +146,7 @@ header.header-placeholder {
       rgba(30, 143, 74, 0.65),
       rgba(30, 111, 216, 0.65)
     ),
-    url("./img/predio\ animado.png");
+    url("../assets/img/predio\ fund\ e\ medio.jpeg");
   background-size: cover;
   background-position: center;
   color: var(--cor-branco);
@@ -227,6 +227,7 @@ header.header-placeholder {
   color: var(--cor-cinza);
 }
 
+
 .history__content p:not(:last-child) {
   margin-bottom: 18px;
 }
@@ -250,15 +251,34 @@ header.header-placeholder {
 }
 
 .card__icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: rgba(30, 143, 74, 0.1);
-  color: var(--cor-verde);
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 0;
+  background: none;
+  display: block;
+  margin: 0 0 20px 0; /* align to start (left) */
+}
+
+/* use the local SVG puzzle images (no circular background) */
+.card--missao .card__icon {
+  background-image: url('../assets/img/missao.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.card--visao .card__icon {
+  background-image: url('../assets/img/visao.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.card--valores .card__icon {
+  background-image: url('../assets/img/valores.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .infra__grid {
