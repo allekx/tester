@@ -71,9 +71,17 @@ p { margin: 0 0 12px; }
 .btn--outline:hover { background: var(--green); color: var(--white); }
 
 /* HERO */
-.hero { background: var(--green-100); padding: 64px 0; position: relative; overflow: hidden; }
+.hero {
+  background: var(--green-100) url("../img/testebanner.png") no-repeat center/cover;
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero__text h1 {
+  color: #ffffff;
+}
 .hero__grid { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 32px; }
-.subtitle { color: #165a1a; font-weight: 500; margin-bottom: 20px; }
+.subtitle { color: #ffffff; font-weight: 500; margin-bottom: 20px; }
 .hero__art { display: grid; place-items: center; }
 .icon-cloud { display: grid; grid-template-columns: repeat(5, auto); gap: 12px; font-size: 40px; opacity: .9; }
 
@@ -94,10 +102,10 @@ p { margin: 0 0 12px; }
 .card { border-radius: var(--radius-lg); background: var(--white); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
 .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .card__media { height: 180px; background-size: cover; background-position: center; }
-.card__media--ballet { background-image: url('../images/ballet.jpg'); }
-.card__media--jj { background-image: url('../images/jiujitsu.jpg'); }
-.card__media--futsal { background-image: url('../images/futsal.jpg'); }
-.card__media--volei { background-image: url('../images/volei.jpg'); }
+.card__media--ballet { background-image: url('../img/balletbanner.png'); }
+.card__media--jj { background-image: url('../img/jiujitsubanner.png'); }
+.card__media--futsal { background-image: url('../img/futsalbanner.png'); }
+.card__media--volei { background-image: url('../img/voleibanner.png'); }
 .card__body { padding: 16px 16px 20px; }
 .card__title { margin: 0 0 8px; }
 
